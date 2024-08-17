@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Laugh Line</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <!-- <link rel="icon" href="images/favicon.png" type="image/png" /> -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1 class="mt-5">Laugh Out Loud!</h1>
+      <p class="lead">Get a joke, lighten your day!</p>
+
+      <div class="mt-4">
+        <a href="/single-joke" class="btn btn-primary btn-lg"
+          >Tell me a joke!</a
+        >
+        <a href="/two-part-joke" class="btn btn-secondary btn-lg"
+          >Hit me with a two-part joke!</a
+        >
+      </div>
+
+      <% if (locals.joke) { %>
+      <div class="joke-card mt-5">
+        <% if (locals.category) { %>
+        <div class="category-tag"><%= category %></div>
+        <% } %>
+        <h2><%= joke %></h2>
+        <% if (locals.punchline) { %>
+        <h3 id="jokePunchline" style="display: none"><%= punchline %></h3>
+        <button class="btn btn-success mt-3" id="showPunchlineBtn">
+          Show Punchline
+        </button>
+        <% } %>
+      </div>
+      <!-- Star Rating -->
+      <div class="star-rating mt-3">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+      <div
+        id="ratingMessage"
+        style="display: none; color: green; font-weight: bold"
+      ></div>
+
+      <p class="mt-2">Your Rating: <span id="ratingValue">0</span>/5</p>
+      <% } else { %>
+      <div class="joke-card mt-5">
+        <h2>No joke available at the moment. Try again later!</h2>
+      </div>
+      <% } %>
+
+      <div class="mt-5">
+        <span class="emoji-btn">😂</span>
+        <span class="emoji-btn">😐</span>
+        <span class="emoji-btn">🙄</span>
+      </div>
+
+      <footer class="mt-5">
+        <p>
+          <a href="/" class="mb-3 me-2 mb-md-0 lh-1"
+            ><img
+              src="images/favicon.png"
+              alt="Logo"
+              width="30"
+              height="24" /></a
+          >&copy; <%= new Date().getFullYear() %> Laugh Line. Share the
+          laughter!
+        </p>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="scripts/static.js"></script>
+  </body>
+</html>
