@@ -9,4 +9,4 @@ Use npm run dev / node index or you can install nodemon to run index
 
 
 - npm install
-- npm run dev
+- npm run dev - trigers the script in package.json ("dev": "node --watch index") and runs the server like nodemon would. server will run and changes will not require a server restart.
